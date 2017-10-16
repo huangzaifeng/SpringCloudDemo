@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableEurekaClient
 public class SpringCloudConsumerApplication {
+	/*加载ribbon配置*/
 	@Bean
 	@LoadBalanced
 	public RestTemplate restTemplate(){
