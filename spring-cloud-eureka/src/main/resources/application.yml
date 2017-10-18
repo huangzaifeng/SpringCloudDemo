@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: spring-cloud-eurake-ha
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    serviceUrl:
+      defaultZone: http://lile:123@peer2:8762/eureka
+
+security:
+  basic:
+      enabled: true
+  user:
+    name: lile
+    password: 123

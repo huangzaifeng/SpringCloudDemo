@@ -3,12 +3,12 @@ package com.cmcc.cn.webapi;
 import com.cmcc.cn.entity.User;
 import com.cmcc.cn.service.inf.UserIService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by le on 2017/10/16.
@@ -28,5 +28,26 @@ public class UserControler {
         System.out.println("=============");
         return  user;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/findUserForList")
+    private List<User> findUserForList(){
+        System.out.println("=============");
+        User user=userIService.findUserByName("ll");
+        List<User> userList=new ArrayList<User>();
+        userList.add(user);
+        return  userList;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/findUserByPostMethod" ,method = RequestMethod.POST)
+    private User findUserByPostMethod(@RequestBody User user){
+        System.out.println("=============findUserByPostMethod");
+        System.out.println(user);
+        System.out.println("=============findUserByPostMethod");
+        return  user;
+    }
+
+
 
 }
